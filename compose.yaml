@@ -1,9 +1,0 @@
-services:
-  postgres:
-    image: 'postgres:latest'
-    environment:
-      - POSTGRES_DB=voting_app
-      - POSTGRES_USER=ucad
-      - POSTGRES_PASSWORD=ucad
-    ports:
-      - '5422:5432'
