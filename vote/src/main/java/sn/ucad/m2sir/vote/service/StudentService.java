@@ -19,4 +19,12 @@ public class StudentService {
         return studentRepository.findAll();
     }
 
+
+    public Student findBynce(String refNCE) {
+        return studentRepository
+                .findBynce(refNCE);
+
+    }
+
+
 }

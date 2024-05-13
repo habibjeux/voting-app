@@ -17,10 +17,11 @@ public class StudentControlleur {
     private final StudentService studentService;
 
     @PostMapping("/create")
-    public ResponseEntity<ServiceResponse> saveBulk(@RequestBody List<Student> students) {
+    public ResponseEntity<ServiceResponse> save(@RequestBody List<Student> students) {
         try {
 
             List<Student> savedStudents = studentService.saveAll(students);
+
 
             return ResponseEntity.ok(
                     ServiceResponse.builder()
@@ -55,6 +56,16 @@ public class StudentControlleur {
                             .message(e.getMessage())
                             .build()
             );
+        }
+    }
+
+    @GetMapping("by/{id}")
+    public Student findByNce(@PathVariable String nce) {
+        try {
+            return studentService.findBynce(nce);
+
+        }catch (Exception e ) {
+            return null;
         }
     }
 }
