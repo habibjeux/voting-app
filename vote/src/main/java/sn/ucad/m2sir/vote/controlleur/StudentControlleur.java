@@ -1,5 +1,6 @@
 package sn.ucad.m2sir.vote.controlleur;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -66,6 +67,22 @@ public class StudentControlleur {
 
         }catch (Exception e ) {
             return null;
+        }
+    }
+    @Transactional
+    @DeleteMapping("delete/{nce}")
+    public ResponseEntity<ServiceResponse> delete(@PathVariable String nce) {
+        try {
+            studentService.delete(nce);
+            return ResponseEntity.ok(ServiceResponse.builder()
+                    .success(true)
+                    .message("Student deleted successfully")
+                    .build());
+        }catch (Exception e ) {
+            return ResponseEntity.ok(ServiceResponse.builder()
+                    .success(false)
+                    .message(e.getMessage())
+                    .build());
         }
     }
 }

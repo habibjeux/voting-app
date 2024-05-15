@@ -27,4 +27,7 @@ public class StudentService {
     }
 
 
+    public void delete(String nce) {
+        studentRepository.deleteByNce(nce);
+    }
 }

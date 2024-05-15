@@ -9,4 +9,5 @@ import java.util.Optional;
 public interface StudentRepository extends JpaRepository<Student, Long>{
 
     Student findBynce(String refNCE);
+    void deleteByNce(String nce);
 }
